@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Readify | Book Explorer</title>
+  <meta name="description" content="Browse and filter books, open details in a modal, and save to your list."/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Primary Navigation">
+        <a class="brand" href="index.html"><span class="brand-badge">R</span><span>Readify</span></a>
+        <div class="nav-links">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="explorer.html">Book Explorer</a>
+          <a data-nav href="tracker.html">Progress Tracker</a>
+          <a data-nav href="recommender.html">Recommender</a>
+          <a data-nav href="flow.html">Reading Flow</a>
+          <a data-nav href="feedback.html">Feedback</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="explorer.html">Book Explorer</a>
+        <a data-nav href="tracker.html">Progress Tracker</a>
+        <a data-nav href="recommender.html">Recommender</a>
+        <a data-nav href="flow.html">Reading Flow</a>
+        <a data-nav href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="card reveal" style="padding:16px">
+      <h1 style="margin:6px 0 8px">Book Explorer</h1>
+      <p class="small" style="margin:0 0 12px">
+        Filter/search by genre, title, or author. Click a card to open details in a modal.
+      </p>
+
+      <div class="toolbar card" style="margin-top:10px">
+        <div class="field">
+          <label for="search">Search (title/author)</label>
+          <input id="search" type="text" placeholder="Type to search...">
+        </div>
+        <div class="field">
+          <label for="genre">Genre</label>
+          <select id="genre">
+            <option value="All">All</option>
+            <option>Fiction</option>
+            <option>Fantasy</option>
+            <option>Sci-Fi</option>
+            <option>Mystery</option>
+            <option>Non-Fiction</option>
+          </select>
+        </div>
+        <button class="btn primary" id="clearBtn" type="button">Clear</button>
+      </div>
+
+      <div id="booksGrid" class="books-grid" style="margin-top:14px"></div>
+      <p class="small" id="countHint" style="margin:12px 0 0"></p>
+    </div>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Book details">
+    <div class="modal-content card">
+      <div class="modal-head">
+        <div>
+          <h2 id="mTitle" style="margin:0 0 4px"></h2>
+          <div class="small" id="mMeta"></div>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p id="mSynopsis" style="margin:8px 0 12px"></p>
+
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+          <div class="card" style="padding:12px">
+            <strong>Prequels</strong>
+            <ul id="mPrequels" style="margin:8px 0 0; color:var(--muted)"></ul>
+          </div>
+          <div class="card" style="padding:12px">
+            <strong>Sequels</strong>
+            <ul id="mSequels" style="margin:8px 0 0; color:var(--muted)"></ul>
+          </div>
+        </div>
+
+        <table class="table" aria-label="Ratings and reviews">
+          <thead>
+            <tr><th>Source</th><th>Rating</th><th>Comment</th></tr>
+          </thead>
+          <tbody id="mReviews"></tbody>
+        </table>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <button class="btn ok" id="saveToListBtn" type="button">Save to Reading List</button>
+          <button class="btn danger" id="removeFromListBtn" type="button">Remove from List</button>
+        </div>
+        <p class="small" id="mListHint" style="margin:10px 0 0"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="inner"><p class="title">Notice</p><p class="msg">Message</p></div>
+  </div>
+
+  <script type="module" src="js/explorer.js"></script>
+</body>
+</html>

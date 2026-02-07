@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Readify | Random Recommender</title>
+  <meta name="description" content="Pick a genre and length, get a random book, and save it to your reading list."/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="brand" href="index.html"><span class="brand-badge">R</span><span>Readify</span></a>
+        <div class="nav-links">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="explorer.html">Book Explorer</a>
+          <a data-nav href="tracker.html">Progress Tracker</a>
+          <a data-nav href="recommender.html">Recommender</a>
+          <a data-nav href="flow.html">Reading Flow</a>
+          <a data-nav href="feedback.html">Feedback</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="explorer.html">Book Explorer</a>
+        <a data-nav href="tracker.html">Progress Tracker</a>
+        <a data-nav href="recommender.html">Recommender</a>
+        <a data-nav href="flow.html">Reading Flow</a>
+        <a data-nav href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="two-col">
+      <section class="card reveal" style="padding:16px">
+        <h1 style="margin:6px 0 10px">Random Book Recommender</h1>
+        <p class="small" style="margin:0 0 12px">
+          Choose genre + length, then we randomly recommend a book from local JSON data.
+        </p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="rGenre">Genre</label>
+            <select id="rGenre">
+              <option value="All">All</option>
+              <option>Fiction</option>
+              <option>Fantasy</option>
+              <option>Sci-Fi</option>
+              <option>Mystery</option>
+              <option>Non-Fiction</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="rLength">Length</label>
+            <select id="rLength">
+              <option value="All">All</option>
+              <option>Short</option>
+              <option>Medium</option>
+              <option>Long</option>
+            </select>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn primary" id="pickBtn" type="button">Recommend</button>
+            <button class="btn" id="againBtn" type="button">Pick Again</button>
+            <button class="btn ok" id="saveBtn" type="button">Save to Reading List</button>
+          </div>
+          <p class="small" id="rHint" style="margin:0"></p>
+        </div>
+      </section>
+
+      <aside class="card reveal" style="padding:16px">
+        <h2 style="margin:6px 0 10px">Your Recommendation</h2>
+        <div id="recCard" class="card" style="padding:12px">
+          <img id="recImg" src="assets/images/book-placeholder.jpg" alt="Book cover" style="height:200px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.1);margin-bottom:10px">
+          <h3 id="recTitle" style="margin:0 0 6px">—</h3>
+          <p id="recMeta" class="small" style="margin:0 0 8px">—</p>
+          <p id="recSyn" class="small" style="margin:0">Choose filters and click Recommend.</p>
+        </div>
+
+        <div class="card" style="padding:12px; margin-top:12px">
+          <strong>Your Reading List</strong>
+          <ul id="listUl" style="margin:8px 0 0; color:var(--muted)"></ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="inner"><p class="title">Notice</p><p class="msg">Message</p></div>
+  </div>
+
+  <script type="module" src="js/recommender.js"></script>
+</body>
+</html>

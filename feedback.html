@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Readify | Feedback</title>
+  <meta name="description" content="Send feedback with validation and browse FAQs with an accordion."/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="brand" href="index.html"><span class="brand-badge">R</span><span>Readify</span></a>
+        <div class="nav-links">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="explorer.html">Book Explorer</a>
+          <a data-nav href="tracker.html">Progress Tracker</a>
+          <a data-nav href="recommender.html">Recommender</a>
+          <a data-nav href="flow.html">Reading Flow</a>
+          <a data-nav href="feedback.html">Feedback</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="explorer.html">Book Explorer</a>
+        <a data-nav href="tracker.html">Progress Tracker</a>
+        <a data-nav href="recommender.html">Recommender</a>
+        <a data-nav href="flow.html">Reading Flow</a>
+        <a data-nav href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="two-col">
+      <section class="card reveal" style="padding:16px">
+        <h1 style="margin:6px 0 10px">Feedback</h1>
+        <p class="small" style="margin:0 0 12px">
+          Fully validated form. On submission we show a confirmation and store your message in localStorage.
+        </p>
+
+        <form id="fbForm" class="form-row" novalidate>
+          <div class="field">
+            <label for="fbName">Name</label>
+            <input id="fbName" type="text" required placeholder="Your name">
+          </div>
+
+          <div class="field">
+            <label for="fbEmail">Email</label>
+            <input id="fbEmail" type="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="field">
+            <label for="fbMsg">Message</label>
+            <textarea id="fbMsg" required placeholder="Write your message..."></textarea>
+          </div>
+
+          <button class="btn primary" type="submit">Submit Feedback</button>
+          <p class="small" id="fbHint" style="margin:0"></p>
+        </form>
+
+        <div class="card" style="padding:12px; margin-top:12px">
+          <strong>Saved feedback count</strong>
+          <div class="small" id="fbCount" style="margin-top:6px"></div>
+        </div>
+      </section>
+
+      <aside class="card reveal" style="padding:16px">
+        <h2 style="margin:6px 0 10px">FAQ</h2>
+        <p class="small" style="margin:0 0 12px">Accordion made with JavaScript.</p>
+
+        <div class="accordion" id="faq">
+          <div class="acc-item card">
+            <div class="acc-q"><strong>Is this a real book store?</strong><span>+</span></div>
+            <div class="acc-a">
+              <p style="margin:8px 0 0">No. This is a front-end project demo using local JSON data.</p>
+            </div>
+          </div>
+
+          <div class="acc-item card">
+            <div class="acc-q"><strong>Where is my data saved?</strong><span>+</span></div>
+            <div class="acc-a">
+              <p style="margin:8px 0 0">Newsletter emails, progress, reading list, completed books, and feedback are saved in localStorage.</p>
+            </div>
+          </div>
+
+          <div class="acc-item card">
+            <div class="acc-q"><strong>How do I host this?</strong><span>+</span></div>
+            <div class="acc-a">
+              <p style="margin:8px 0 0">Upload your project to GitHub and enable GitHub Pages in repo Settings.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="inner"><p class="title">Notice</p><p class="msg">Message</p></div>
+  </div>
+
+  <script type="module" src="js/feedback.js"></script>
+</body>
+</html>

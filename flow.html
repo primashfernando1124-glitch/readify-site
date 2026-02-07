@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Readify | Reading Flow</title>
+  <meta name="description" content="Toggle cozy ambient sounds and track completed books in localStorage."/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="https://www.google.com/s2/favicons?domain=github.com&sz=32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="brand" href="index.html"><span class="brand-badge">R</span><span>Readify</span></a>
+        <div class="nav-links">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="explorer.html">Book Explorer</a>
+          <a data-nav href="tracker.html">Progress Tracker</a>
+          <a data-nav href="recommender.html">Recommender</a>
+          <a data-nav href="flow.html">Reading Flow</a>
+          <a data-nav href="feedback.html">Feedback</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="explorer.html">Book Explorer</a>
+        <a data-nav href="tracker.html">Progress Tracker</a>
+        <a data-nav href="recommender.html">Recommender</a>
+        <a data-nav href="flow.html">Reading Flow</a>
+        <a data-nav href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="hero-grid">
+      <section class="card reveal" style="padding:16px">
+        <div class="kicker">Focus mode</div>
+        <h1 style="margin:10px 0 10px">Reading Flow</h1>
+        <p class="small" style="margin:0 0 12px">
+          Toggle cozy sounds while you read, and track completed books using localStorage.
+          (Audio is hardcoded from internet URLs.)
+        </p>
+
+        <div class="card" style="padding:12px; margin-top:10px">
+          <strong>Ambient Sounds</strong>
+          <p class="small" style="margin:6px 0 10px">Choose one sound to play. Stop anytime.</p>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn" id="rainBtn" type="button">Rain</button>
+            <button class="btn" id="cafeBtn" type="button">Cafe</button>
+            <button class="btn" id="fireBtn" type="button">Fireplace</button>
+            <button class="btn danger" id="stopBtn" type="button">Stop</button>
+          </div>
+
+          <audio id="player" preload="none"></audio>
+          <p class="small" id="soundHint" style="margin:10px 0 0"></p>
+        </div>
+      </section>
+
+      <aside class="card reveal" style="padding:16px; overflow:hidden">
+        <!-- Remote cozy image -->
+        <img
+          src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80"
+          alt="Cozy reading vibe"
+          style="height:220px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.1);margin-bottom:10px"
+        >
+        <h2 style="margin:6px 0 10px">Completed Books</h2>
+
+        <form id="doneForm" class="form-row" novalidate>
+          <div class="field">
+            <label for="doneTitle">Book title</label>
+            <input id="doneTitle" type="text" placeholder="Type a completed book title" required>
+          </div>
+          <button class="btn ok" type="submit">Add Completed</button>
+        </form>
+
+        <div class="card" style="padding:12px; margin-top:12px">
+          <strong>Done list</strong>
+          <ul id="doneUl" style="margin:8px 0 0; color:var(--muted)"></ul>
+          <button class="btn danger" id="clearDoneBtn" type="button" style="margin-top:10px">Clear Done List</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="inner"><p class="title">Notice</p><p class="msg">Message</p></div>
+  </div>
+
+  <script type="module" src="js/flow.js"></script>
+</body>
+</html>

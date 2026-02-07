@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Readify | Progress Tracker</title>
+  <meta name="description" content="Track pages, completion %, and estimated finish time. Save progress locally."/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a class="brand" href="index.html"><span class="brand-badge">R</span><span>Readify</span></a>
+        <div class="nav-links">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="explorer.html">Book Explorer</a>
+          <a data-nav href="tracker.html">Progress Tracker</a>
+          <a data-nav href="recommender.html">Recommender</a>
+          <a data-nav href="flow.html">Reading Flow</a>
+          <a data-nav href="feedback.html">Feedback</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="explorer.html">Book Explorer</a>
+        <a data-nav href="tracker.html">Progress Tracker</a>
+        <a data-nav href="recommender.html">Recommender</a>
+        <a data-nav href="flow.html">Reading Flow</a>
+        <a data-nav href="feedback.html">Feedback</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="two-col">
+      <section class="card reveal" style="padding:16px">
+        <h1 style="margin:6px 0 10px">Reading Progress Tracker</h1>
+        <p class="small" style="margin:0 0 12px">
+          Enter total pages, pages read, and your daily reading speed (pages/day).
+          We calculate completion % and estimated finish date.
+        </p>
+
+        <form id="trackerForm" class="form-row" novalidate>
+          <div class="field">
+            <label for="bookName">Book name (optional)</label>
+            <input id="bookName" type="text" placeholder="e.g., Clockwork Skies">
+          </div>
+
+          <div class="field">
+            <label for="totalPages">Total pages</label>
+            <input id="totalPages" type="number" min="1" required placeholder="e.g., 320">
+          </div>
+
+          <div class="field">
+            <label for="pagesRead">Pages read</label>
+            <input id="pagesRead" type="number" min="0" required placeholder="e.g., 120">
+          </div>
+
+          <div class="field">
+            <label for="speed">Daily reading speed (pages/day)</label>
+            <input id="speed" type="number" min="1" required placeholder="e.g., 25">
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn primary" type="submit">Calculate</button>
+            <button class="btn ok" id="saveProgressBtn" type="button">Save Progress</button>
+            <button class="btn danger" id="clearSavedBtn" type="button">Clear Saved</button>
+          </div>
+
+          <p class="small" id="savedHint" style="margin:0"></p>
+        </form>
+      </section>
+
+      <aside class="card reveal progress-wrap">
+        <h2 style="margin:6px 0 10px">Results</h2>
+        <div class="progress-bar" aria-label="Progress bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <p class="counter" id="percentText">0%</p>
+        <p class="mini" id="finishText">Estimated finish: —</p>
+        <p class="mini" id="remainingText">Remaining pages: —</p>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="inner"><p class="title">Notice</p><p class="msg">Message</p></div>
+  </div>
+
+  <script type="module" src="js/tracker.js"></script>
+</body>
+</html>
