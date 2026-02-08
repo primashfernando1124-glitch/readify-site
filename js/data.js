@@ -76,7 +76,7 @@ export const BOOKS = [
     author: "K. A. Noor",
     genre: "Mystery",
     length: "Medium",
-    cover: "https://images.unsplash.com/photo-1455885666463-49d0b7c45f22?auto=format&fit=crop&w=900&q=80",
+    cover: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=900&q=80",
     synopsis:
       "A missing curator. A stolen artifact. A museum where audio guides whisper truths no one recorded. A modern mystery with heart.",
     prequels: [],
@@ -138,4 +138,5 @@ export const AUTHORS = [
     img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
     funFact: "Collects street sounds for inspiration."
   }
+
 ];
